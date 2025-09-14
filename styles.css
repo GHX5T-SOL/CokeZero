@@ -511,13 +511,33 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Social Links */
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 500px;
-    margin: 0 auto;
+/* Special styling for trading links */
+.pump-link {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+.pump-link:hover {
+    background: linear-gradient(45deg, #ff5722, #ff9800);
+    border-color: rgba(255, 107, 53, 0.5);
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.dex-link {
+    background: linear-gradient(45deg, #2196f3, #21cbf3);
+    border-color: rgba(33, 150, 243, 0.3);
+}
+
+.dex-link:hover {
+    background: linear-gradient(45deg, #1976d2, #00bcd4);
+    border-color: rgba(33, 150, 243, 0.5);
+    box-shadow: 0 5px 20px rgba(33, 150, 243, 0.3);
+}
+
+.pump-link .social-icon,
+.dex-link .social-icon {
+    background: rgba(255, 255, 255, 0.2);
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .social-link {
