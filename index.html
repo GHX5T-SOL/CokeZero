@@ -12,10 +12,38 @@
     <!-- Glitch Background -->
     <div class="glitch-bg"></div>
     
+    <!-- Background Images -->
+    <div class="background-images">
+        <div class="bg-image bg-image-1"></div>
+        <div class="bg-image bg-image-2"></div>
+        <div class="bg-image bg-image-3"></div>
+        <div class="bg-image bg-image-4"></div>
+        <div class="bg-image bg-image-5"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="favicon.svg" alt="Coke Zero 可乐零" class="header-logo-img">
+                <span class="header-title">Coke Zero 可乐零</span>
+            </div>
+            <nav class="header-nav">
+                <a href="#home" class="nav-link">Home | 首页</a>
+                <a href="#about" class="nav-link">About | 关于</a>
+                <a href="#social" class="nav-link">Social | 社交</a>
+                <button id="headerCA" class="nav-ca-button">
+                    <span class="ca-text">CA</span>
+                    <span class="ca-tooltip">Click to copy Contract Address | 点击复制合约地址</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
     <!-- Main Container -->
     <div class="container">
         <!-- Hero Section -->
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="hero-image">
                 <img src="Coke_Zero_Hero.svg" alt="Coke Zero 可乐零" class="hero-svg">
             </div>
@@ -28,7 +56,7 @@
         </section>
 
         <!-- Conspiracy Section -->
-        <section class="conspiracy-section">
+        <section id="about" class="conspiracy-section">
             <div class="conspiracy-card">
                 <h2 class="section-title glitch-text">
                     THE TRUTH IS OUT THERE | 真相就在那里
@@ -75,7 +103,7 @@
         </section>
 
         <!-- Social Links Section -->
-        <section class="social-section">
+        <section id="social" class="social-section">
             <div class="social-card">
                 <h2 class="section-title glitch-text">
                     JOIN THE MOVEMENT | 加入运动

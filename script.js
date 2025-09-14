@@ -1,24 +1,26 @@
 // Interactive Elements and Animations
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Copy Contract Address Functionality
+    // Copy Contract Address Functionality (Main Section)
     const copyButton = document.getElementById('copyButton');
     const contractAddress = document.getElementById('contractAddress');
     
-    copyButton.addEventListener('click', function() {
-        contractAddress.select();
-        contractAddress.setSelectionRange(0, 99999); // For mobile devices
-        
-        try {
-            navigator.clipboard.writeText(contractAddress.value).then(function() {
+    if (copyButton && contractAddress) {
+        copyButton.addEventListener('click', function() {
+            contractAddress.select();
+            contractAddress.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                navigator.clipboard.writeText(contractAddress.value).then(function() {
+                    showCopySuccess();
+                });
+            } catch (err) {
+                // Fallback for older browsers
+                document.execCommand('copy');
                 showCopySuccess();
-            });
-        } catch (err) {
-            // Fallback for older browsers
-            document.execCommand('copy');
-            showCopySuccess();
-        }
-    });
+            }
+        });
+    }
     
     function showCopySuccess() {
         const originalText = copyButton.innerHTML;
@@ -29,6 +31,79 @@ document.addEventListener('DOMContentLoaded', function() {
             copyButton.innerHTML = originalText;
             copyButton.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
         }, 2000);
+    }
+    
+    // Header CA Copy Functionality
+    const headerCA = document.getElementById('headerCA');
+    
+    if (headerCA && contractAddress) {
+        headerCA.addEventListener('click', function() {
+            contractAddress.select();
+            contractAddress.setSelectionRange(0, 99999);
+            
+            try {
+                navigator.clipboard.writeText(contractAddress.value).then(function() {
+                    showHeaderCopySuccess();
+                });
+            } catch (err) {
+                document.execCommand('copy');
+                showHeaderCopySuccess();
+            }
+        });
+    }
+    
+    function showHeaderCopySuccess() {
+        const originalText = headerCA.querySelector('.ca-text').textContent;
+        headerCA.querySelector('.ca-text').textContent = 'Copied!';
+        headerCA.style.background = 'linear-gradient(45deg, #4caf50, #8bc34a)';
+        
+        setTimeout(function() {
+            headerCA.querySelector('.ca-text').textContent = originalText;
+            headerCA.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
+        }, 2000);
+    }
+    
+    // Smooth Scrolling for Navigation Links
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Header Scroll Effect
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Add transition for smooth header movement
+    if (header) {
+        header.style.transition = 'transform 0.3s ease-in-out';
     }
     
     // Random Glitch Effects
